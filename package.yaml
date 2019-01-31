@@ -1,0 +1,39 @@
+name: nethask
+version: 0.1.0.0
+github: "kbeaulieu/nethask"
+license: BSD3
+author: "Keven Beaulieu"
+maintainer: "example@example.com"
+copyright: "2018 Keven Beaulieu"
+
+extra-source-files:
+  - README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - ncurses
+
+library:
+  source-dirs: src
+
+executables:
+  nethask-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - nethask
+
+tests:
+  nethask-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - nethask

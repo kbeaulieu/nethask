@@ -1,17 +1,18 @@
 name: nethask
 version: 0.1.0.0
 github: "kbeaulieu/nethask"
-license: BSD3
 author: "Keven Beaulieu"
-maintainer: "example@example.com"
-copyright: "2018 Keven Beaulieu"
+copyright: "2019 Keven Beaulieu"
 
 extra-source-files:
   - README.md
 
 dependencies:
   - base >= 4.7 && < 5
+  - mtl
   - ncurses
+  - random
+  - flow
 
 library:
   source-dirs: src

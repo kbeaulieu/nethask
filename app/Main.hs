@@ -1,30 +1,12 @@
 module Main where
 
-import UI.NCurses (
-  runCurses, Window, Event(..), Curses, render, getEvent, moveCursor, drawString, defaultWindow, setEcho, updateWindow)
-
-import Lib
-import Data.List (permutations)
-
-f = permutations
+import Nethask.Core.DungeonGenerator
+import Nethask.Core.Common
+import System.Random
 
 main :: IO ()
-main = runCurses $ do
-    setEcho False
-    window <- defaultWindow
-    updateWindow window $ do
-        moveCursor 1 10
-        drawString "Hello world!"
-        moveCursor 3 10
-        drawString "(press q to quit)"
-        moveCursor 0 0
-    render
-    waitFor window (\ev -> ev == EventCharacter 'q' || ev == EventCharacter 'Q')
+main = do
+    generator <- getStdGen
+    let config = DungeonConfig generator
+    putStrLn $ show $ generateDungeon config
 
-waitFor :: Window -> (Event -> Bool) -> Curses ()
-waitFor w p = loop where
-    loop = do
-        ev <- getEvent w Nothing
-        case ev of
-            Nothing -> loop
-            Just ev' -> if p ev' then return () else loop

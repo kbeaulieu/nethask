@@ -9,4 +9,3 @@ newtype World = World {
 newtype WorldConfig = WorldConfig {
     seed :: Int
 }
-

@@ -1,12 +1,10 @@
 module Main where
 
-import Nethask.Core.DungeonGenerator
-import Nethask.Core.Common
-import System.Random
+import Nethask.Core.DungeonGenerator (DungeonConfig(..), generateDungeon)
+import System.Random (newStdGen)
 
 main :: IO ()
 main = do
-    generator <- getStdGen
+    generator <- newStdGen
     let config = DungeonConfig generator
     putStrLn $ show $ generateDungeon config
-

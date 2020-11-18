@@ -22,4 +22,3 @@ data Room = Room {
 } deriving (Show)
 
 type Corridor = [Point]
-
